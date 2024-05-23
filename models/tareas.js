@@ -20,13 +20,31 @@ export default class Tareas {
     }
 
     borrarTarea( id = '' ){
-        let msg = ''
         if(this._listado[id]){
             delete this._listado[id]
             console.log('Tarea Borrada con exito')
         }else{
             console.log('La tarea no exite')
         }
+    }
+
+    completarTarea( ids = [] ){
+        ids.forEach(id => {
+            const tarea = this._listado[id]
+
+            if(!tarea.completadoEn){
+                tarea.completadoEn = new Date().toISOString();
+                console.log('Tarea Completada con exito')
+            }
+        });
+
+        this.listarArray.forEach(tarea =>{
+            if(!ids.includes(tarea.id)){
+                this._listado[tarea.id].completadoEn = null
+            }
+        })
+
+        
     }
 
     cargarTareasFromArray(tareas = []) {
