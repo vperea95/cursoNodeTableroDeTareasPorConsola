@@ -1,0 +1,1 @@
+"para que funcione el proyecto es necesario tener instalado node v20.12.2 "
